@@ -1,0 +1,1072 @@
+Q1.
+
+-----------------PYRAMID PATTERN--------------
+
+import java.util.Scanner;
+
+public class Pyramid {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of rows: ");
+        int n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+
+            for (int j = 1; j <= 2 * i - 1; j++) {
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+
+Q2.
+
+--------------------DIAMOND PATTERN--------------------
+
+
+import java.util.Scanner;
+
+public class Diamond {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of rows: ");
+        int n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+
+            for (int j = 1; j <= 2 * i - 1; j++) {
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
+
+        for (int i = n - 1; i >= 1; i--) {
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+
+            for (int j = 1; j <= 2 * i - 1; j++) {
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+
+Q3.
+
+------------------PASCAL'S TRIANGLE-----------------
+
+import java.util.Scanner;
+
+public class PascalsTriangle {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of rows: ");
+        int n = sc.nextInt();
+
+        int[][] a = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= i; j++) {
+                if (j == 0 || j == i) {
+                    a[i][j] = 1;
+                } else {
+                    a[i][j] = a[i - 1][j - 1]
+                            + a[i - 1][j];
+                }
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                System.out.print(" ");
+            }
+
+            for (int j = 0; j <= i; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+
+Q4.
+
+-------------------BUBBLE SORT--------------------
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class BubbleSort {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        System.out.println("Enter array elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+
+        sc.close();
+    }
+}
+
+Q5.
+
+--------------------------SELECTION SORT-----------------------
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class SelectionSort {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        System.out.println("Enter array elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < n - 1; i++) {
+            int min = i;
+
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[min]) {
+                    min = j;
+                }
+            }
+
+            int temp = arr[i];
+            arr[i] = arr[min];
+            arr[min] = temp;
+        }
+
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+
+        sc.close();
+    }
+}
+
+Q6.
+
+----------------Student Information System----------------
+
+import java.util.Scanner;
+
+class Student {
+    int rollNo;
+    String name;
+    String course;
+    double marks;
+
+    
+    Student(int rollNo, String name, String course, double marks) {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.course = course;
+        this.marks = marks;
+    }
+
+    
+    void display() {
+        System.out.println("Roll No: " + rollNo);
+        System.out.println("Name: " + name);
+        System.out.println("Course: " + course);
+        System.out.println("Marks: " + marks);
+        System.out.println("--------------------");
+    }
+
+    
+    Student(Student s) {
+        this.rollNo = s.rollNo;
+        this.name = s.name;
+        this.course = s.course;
+        this.marks = s.marks;
+    }
+}
+
+public class StudentInformationSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Student[] students = new Student[100];
+        int count = 0;
+        int choice;
+
+        do {
+            System.out.println("\n1. Add Student");
+            System.out.println("2. Display All Students");
+            System.out.println("3. Search Student");
+            System.out.println("4. Copy Student");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter roll number: ");
+                    int rollNo = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter name: ");
+                    String name = sc.nextLine();
+
+                    System.out.print("Enter course: ");
+                    String course = sc.nextLine();
+
+                    System.out.print("Enter marks: ");
+                    double marks = sc.nextDouble();
+                    sc.nextLine();
+
+                    students[count] =
+                        new Student(rollNo, name, course, marks);
+                    count++;
+
+                    System.out.println("Student added successfully.");
+                    break;
+
+                case 2:
+                    if (count == 0) {
+                        System.out.println("No student records found.");
+                    } else {
+                        for (int i = 0; i < count; i++) {
+                            students[i].display();
+                        }
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter roll number to search: ");
+                    int searchRoll = sc.nextInt();
+
+                    boolean found = false;
+
+                    for (int i = 0; i < count; i++) {
+                        if (students[i].rollNo == searchRoll) {
+                            students[i].display();
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (!found) {
+                        System.out.println("Student not found.");
+                    }
+                    break;
+
+                case 4:
+                    System.out.print("Enter roll number to copy: ");
+                    int copyRoll = sc.nextInt();
+
+                    boolean copied = false;
+
+                    for (int i = 0; i < count; i++) {
+                        if (students[i].rollNo == copyRoll) {
+                            if (count < students.length) {
+                                students[count] =
+                                    new Student(students[i]);
+                                count++;
+                                System.out.println(
+                                    "Student record copied successfully."
+                                );
+                            } else {
+                                System.out.println("Student storage is full.");
+                            }
+                            copied = true;
+                            break;
+                        }
+                    }
+
+                    if (!copied) {
+                        System.out.println("Student not found.");
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Exiting program.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+        } while (choice != 5);
+
+        sc.close();
+    }
+}
+
+Q7.
+
+--------------Notification System--------------
+
+import java.util.Scanner;
+
+interface Notifiable {
+    void sendNotification(String message);
+
+    default void showStatus() {
+        System.out.println("Notification service is ready.");
+    }
+
+    static void displayInfo() {
+        System.out.println("Notification System");
+    }
+}
+
+class Email implements Notifiable {
+    String emailAddress;
+
+    Email(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    Email() {
+        this.emailAddress = "default@gmail.com";
+    }
+
+    @Override
+    public void sendNotification(String message) {
+        System.out.println("Sending Email to: " + emailAddress);
+        System.out.println("Message: " + message);
+    }
+}
+
+class SMS implements Notifiable {
+    String phoneNumber;
+
+    SMS(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public void sendNotification(String message) {
+        System.out.println("Sending SMS to: " + phoneNumber);
+        System.out.println("Message: " + message);
+    }
+}
+
+class Push implements Notifiable {
+    String deviceName;
+
+    Push(String deviceName) {
+        this.deviceName = deviceName;
+    }
+
+    @Override
+    public void sendNotification(String message) {
+        System.out.println("Sending Push Notification to: " + deviceName);
+        System.out.println("Message: " + message);
+    }
+}
+
+public class NotificationSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Notifiable.displayInfo();
+
+        System.out.println("1. Email Notification");
+        System.out.println("2. SMS Notification");
+        System.out.println("3. Push Notification");
+        System.out.print("Enter your choice: ");
+        int choice = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter notification message: ");
+        String message = sc.nextLine();
+
+        Notifiable notification;
+
+        switch (choice) {
+            case 1:
+                System.out.print("Enter email address: ");
+                String email = sc.nextLine();
+                notification = new Email(email);
+                break;
+
+            case 2:
+                System.out.print("Enter phone number: ");
+                String phone = sc.nextLine();
+                notification = new SMS(phone);
+                break;
+
+            case 3:
+                System.out.print("Enter device name: ");
+                String device = sc.nextLine();
+                notification = new Push(device);
+                break;
+
+            default:
+                System.out.println("Invalid choice.");
+                sc.close();
+                return;
+        }
+
+        notification.showStatus();
+        notification.sendNotification(message);
+
+        sc.close();
+    }
+}
+
+Q8.
+
+---------------------Shape Hierarchy---------------
+abstract class Shape {
+    abstract double calculateArea();
+
+    abstract double calculateVolume();
+}
+
+abstract class TwoD extends Shape {
+    @Override
+    double calculateVolume() {
+        return 0;
+    }
+}
+
+abstract class ThreeD extends Shape {
+    @Override
+    double calculateVolume() {
+        return 0;
+    }
+}
+
+class Circle extends TwoD {
+    double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Rectangle extends TwoD {
+    double length, breadth;
+
+    Rectangle(double length, double breadth) {
+        this.length = length;
+        this.breadth = breadth;
+    }
+
+    @Override
+    double calculateArea() {
+        return length * breadth;
+    }
+}
+
+class Sphere extends ThreeD {
+    double radius;
+
+    Sphere(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    double calculateArea() {
+        return 4 * Math.PI * radius * radius;
+    }
+
+    @Override
+    double calculateVolume() {
+        return (4.0 / 3) * Math.PI * radius * radius * radius;
+    }
+}
+
+class Cube extends ThreeD {
+    double side;
+
+    Cube(double side) {
+        this.side = side;
+    }
+
+    @Override
+    double calculateArea() {
+        return 6 * side * side;
+    }
+
+    @Override
+    double calculateVolume() {
+        return side * side * side;
+    }
+}
+
+public class ShapeDemo {
+    public static void main(String[] args) {
+        Circle c = new Circle(5);
+        Rectangle r = new Rectangle(4, 6);
+        Sphere s = new Sphere(3);
+        Cube cb = new Cube(4);
+
+        System.out.println("Circle Area: " + c.calculateArea());
+        System.out.println("Rectangle Area: " + r.calculateArea());
+        System.out.println("Sphere Surface Area: " + s.calculateArea());
+        System.out.println("Sphere Volume: " + s.calculateVolume());
+        System.out.println("Cube Surface Area: " + cb.calculateArea());
+        System.out.println("Cube Volume: " + cb.calculateVolume());
+    }
+}
+
+Q9.
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Animal {
+    String name;
+    int age;
+
+    Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+
+    void makeSound() {
+        System.out.println("Animal makes a sound.");
+    }
+}
+
+class Lion extends Animal {
+    Lion(String name, int age) {
+        super(name, age);
+    }
+
+    @Override
+    void makeSound() {
+        System.out.println("Lion roars.");
+    }
+}
+
+class Elephant extends Animal {
+    Elephant(String name, int age) {
+        super(name, age);
+    }
+
+    @Override
+    void makeSound() {
+        System.out.println("Elephant trumpets.");
+    }
+}
+
+class Monkey extends Animal {
+    Monkey(String name, int age) {
+        super(name, age);
+    }
+
+    @Override
+    void makeSound() {
+        System.out.println("Monkey chatters.");
+    }
+}
+
+class Zoo {
+    String zooName;
+    ArrayList<Animal> animals = new ArrayList<>();
+
+    Zoo(String zooName) {
+        this.zooName = zooName;
+    }
+
+    void addAnimal(Animal animal) {
+        animals.add(animal);
+        System.out.println("Animal added successfully.");
+    }
+
+    void displayAnimals() {
+        System.out.println("Zoo Name: " + zooName);
+
+        if (animals.isEmpty()) {
+            System.out.println("No animals in the zoo.");
+            return;
+        }
+
+        for (Animal a : animals) {
+            a.display();
+            a.makeSound();
+            System.out.println("------------------");
+        }
+    }
+}
+
+public class ZooManagementSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Zoo zoo = new Zoo("City Zoo");
+        int choice;
+
+        do {
+            System.out.println("\n1. Add Lion");
+            System.out.println("2. Add Elephant");
+            System.out.println("3. Add Monkey");
+            System.out.println("4. Display Animals");
+            System.out.println("5. Exit");
+            System.out.print("Enter choice: ");
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter lion name: ");
+                    String lionName = sc.nextLine();
+
+                    System.out.print("Enter age: ");
+                    int lionAge = sc.nextInt();
+                    sc.nextLine();
+
+                    zoo.addAnimal(new Lion(lionName, lionAge));
+                    break;
+
+                case 2:
+                    System.out.print("Enter elephant name: ");
+                    String elephantName = sc.nextLine();
+
+                    System.out.print("Enter age: ");
+                    int elephantAge = sc.nextInt();
+                    sc.nextLine();
+
+                    zoo.addAnimal(new Elephant(elephantName, elephantAge));
+                    break;
+
+                case 3:
+                    System.out.print("Enter monkey name: ");
+                    String monkeyName = sc.nextLine();
+
+                    System.out.print("Enter age: ");
+                    int monkeyAge = sc.nextInt();
+                    sc.nextLine();
+
+                    zoo.addAnimal(new Monkey(monkeyName, monkeyAge));
+                    break;
+
+                case 4:
+                    zoo.displayAnimals();
+                    break;
+
+                case 5:
+                    System.out.println("Exiting Zoo Management System.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+        } while (choice != 5);
+
+        sc.close();
+    }
+}
+
+Q10.
+
+-----------------------Custom Exception Hierarchy------------------
+
+import java.util.Scanner;
+
+class OrderException extends Exception {
+    OrderException(String message) {
+        super(message);
+    }
+}
+
+class PaymentException extends OrderException {
+    PaymentException(String message) {
+        super(message);
+    }
+}
+
+class InventoryException extends OrderException {
+    InventoryException(String message) {
+        super(message);
+    }
+}
+
+class ShippingException extends OrderException {
+    ShippingException(String message) {
+        super(message);
+    }
+}
+
+public class OrderManagement {
+    static void makePayment(double amount) throws PaymentException {
+        if (amount <= 0) {
+            throw new PaymentException("Invalid payment amount.");
+        }
+        System.out.println("Payment successful.");
+    }
+
+    static void checkInventory(int quantity) throws InventoryException {
+        if (quantity <= 0) {
+            throw new InventoryException("Invalid product quantity.");
+        }
+
+        if (quantity > 10) {
+            throw new InventoryException("Product is out of stock.");
+        }
+
+        System.out.println("Inventory available.");
+    }
+
+    static void shipOrder(String address) throws ShippingException {
+        if (address == null || address.trim().isEmpty()) {
+            throw new ShippingException("Invalid shipping address.");
+        }
+
+        System.out.println("Order shipped successfully.");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter payment amount: ");
+            double amount = sc.nextDouble();
+
+            System.out.print("Enter product quantity: ");
+            int quantity = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Enter shipping address: ");
+            String address = sc.nextLine();
+
+            makePayment(amount);
+            checkInventory(quantity);
+            shipOrder(address);
+
+        } catch (PaymentException e) {
+            System.out.println("Payment Error: " + e.getMessage());
+
+        } catch (InventoryException e) {
+            System.out.println("Inventory Error: " + e.getMessage());
+
+        } catch (ShippingException e) {
+            System.out.println("Shipping Error: " + e.getMessage());
+
+        } finally {
+            sc.close();
+        }
+    }
+}
+
+Q11.
+
+-------------------------Shopping Cart System-------------------
+
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ShoppingCartSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        HashMap<String, Double> products = new HashMap<>();
+        ArrayList<String> orderHistory = new ArrayList<>();
+        HashMap<String, Integer> cart = new HashMap<>();
+
+        products.put("Laptop", 50000.0);
+        products.put("Mobile", 20000.0);
+        products.put("Headphones", 1500.0);
+        products.put("Keyboard", 1000.0);
+        products.put("Mouse", 500.0);
+
+        int choice;
+
+        do {
+            System.out.println("\n1. Display Products");
+            System.out.println("2. Add Product to Cart");
+            System.out.println("3. View Cart");
+            System.out.println("4. Place Order");
+            System.out.println("5. View Order History");
+            System.out.println("6. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("\nAvailable Products:");
+
+                    for (String name : products.keySet()) {
+                        System.out.println(name + " - Rs. " + products.get(name));
+                    }
+                    break;
+
+                case 2:
+                    System.out.print("Enter product name: ");
+                    String name = sc.nextLine();
+
+                    if (products.containsKey(name)) {
+                        System.out.print("Enter quantity: ");
+                        int quantity = sc.nextInt();
+                        sc.nextLine();
+
+                        if (quantity > 0) {
+                            cart.put(name, cart.getOrDefault(name, 0) + quantity);
+                            System.out.println("Product added to cart.");
+                        } else {
+                            System.out.println("Quantity must be greater than zero.");
+                        }
+                    } else {
+                        System.out.println("Product not found.");
+                    }
+                    break;
+
+                case 3:
+                    if (cart.isEmpty()) {
+                        System.out.println("Cart is empty.");
+                    } else {
+                        double total = 0;
+
+                        System.out.println("\nYour Cart:");
+
+                        for (String product : cart.keySet()) {
+                            double price = products.get(product);
+                            int quantity = cart.get(product);
+                            double subtotal = price * quantity;
+
+                            System.out.println(product + " x " + quantity
+                                    + " = Rs. " + subtotal);
+
+                            total += subtotal;
+                        }
+
+                        System.out.println("Total Amount: Rs. " + total);
+                    }
+                    break;
+
+                case 4:
+                    if (cart.isEmpty()) {
+                        System.out.println("Cart is empty. Add products first.");
+                    } else {
+                        double total = 0;
+                        StringBuilder order = new StringBuilder();
+
+                        for (String product : cart.keySet()) {
+                            int quantity = cart.get(product);
+                            double subtotal = products.get(product) * quantity;
+                            total += subtotal;
+
+                            order.append(product)
+                                 .append(" x ")
+                                 .append(quantity)
+                                 .append(", ");
+                        }
+
+                        order.append("Total = Rs. ").append(total);
+                        orderHistory.add(order.toString());
+
+                        System.out.println("Order placed successfully.");
+                        System.out.println("Total Amount: Rs. " + total);
+
+                        cart.clear();
+                    }
+                    break;
+
+                case 5:
+                    if (orderHistory.isEmpty()) {
+                        System.out.println("No order history available.");
+                    } else {
+                        System.out.println("\nOrder History:");
+
+                        for (int i = 0; i < orderHistory.size(); i++) {
+                            System.out.println((i + 1) + ". " + orderHistory.get(i));
+                        }
+                    }
+                    break;
+
+                case 6:
+                    System.out.println("Exiting Shopping Cart System.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+        } while (choice != 6);
+
+        sc.close();
+    }
+}
+
+Q12.
+
+---------------------------Product Inventory System--------------------------
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+class Product {
+    int id;
+    String name;
+    double price;
+    int quantity;
+
+    Product(int id, String name, double price, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public String toString() {
+        return "ID: " + id + ", Name: " + name
+                + ", Price: " + price + ", Quantity: " + quantity;
+    }
+}
+
+public class ProductInventorySystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        List<Product> products = new ArrayList<>();
+
+        products.add(new Product(101, "Laptop", 50000, 5));
+        products.add(new Product(102, "Mouse", 500, 20));
+        products.add(new Product(103, "Keyboard", 1500, 10));
+        products.add(new Product(104, "Mobile", 20000, 8));
+        products.add(new Product(105, "Headphones", 2500, 15));
+
+        int choice;
+
+        do {
+            System.out.println("\n1. Display All Products");
+            System.out.println("2. Add Product");
+            System.out.println("3. Filter Products by Price");
+            System.out.println("4. Display Product Names");
+            System.out.println("5. Filter Products by Quantity");
+            System.out.println("6. Exit");
+            System.out.print("Enter your choice: ");
+
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1:
+                    products.forEach(System.out::println);
+                    break;
+
+                case 2:
+                    System.out.print("Enter product ID: ");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter product name: ");
+                    String name = sc.nextLine();
+
+                    System.out.print("Enter price: ");
+                    double price = sc.nextDouble();
+
+                    System.out.print("Enter quantity: ");
+                    int quantity = sc.nextInt();
+                    sc.nextLine();
+
+                    products.add(new Product(id, name, price, quantity));
+                    System.out.println("Product added successfully.");
+                    break;
+
+                case 3:
+                    System.out.print("Enter maximum price: ");
+                    double maxPrice = sc.nextDouble();
+                    sc.nextLine();
+
+                    List<Product> filteredProducts = products.stream()
+                            .filter(p -> p.price <= maxPrice)
+                            .collect(Collectors.toList());
+
+                    filteredProducts.forEach(System.out::println);
+                    break;
+
+                case 4:
+                    List<String> productNames = products.stream()
+                            .map(p -> p.name)
+                            .collect(Collectors.toList());
+
+                    System.out.println(productNames);
+                    break;
+
+                case 5:
+                    System.out.print("Enter minimum quantity: ");
+                    int minQuantity = sc.nextInt();
+                    sc.nextLine();
+
+                    List<Product> availableProducts = products.stream()
+                            .filter(p -> p.quantity >= minQuantity)
+                            .collect(Collectors.toList());
+
+                    availableProducts.forEach(System.out::println);
+                    break;
+
+                case 6:
+                    System.out.println("Exiting Product Inventory System.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+        } while (choice != 6);
+
+        sc.close();
+    }
+}
+
+
+
+
+
+
